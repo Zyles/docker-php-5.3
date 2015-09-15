@@ -81,7 +81,6 @@ RUN buildDeps=" \
             --disable-cgi \
             --enable-mysqlnd \
             --with-mysql \
-            --with-soap \
             --with-mcrypt \
             --with-curl \
             --with-openssl=/usr/local/ssl \
@@ -93,6 +92,8 @@ RUN buildDeps=" \
       && { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
       && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
       && make clean
+
+RUN apt-get install php-soap
 
 COPY docker-php-* /usr/local/bin/
 
