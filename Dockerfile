@@ -93,8 +93,6 @@ RUN buildDeps=" \
       && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
       && make clean
 
-RUN apt-get install -y --no-install-recommends php-soap
-
 COPY docker-php-* /usr/local/bin/
 
 WORKDIR /var/www/html
