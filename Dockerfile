@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libmysqlclient-dev \
       libsqlite3-0 \
       libxml2 \
+      libxml2-dev \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
@@ -80,6 +81,8 @@ RUN buildDeps=" \
             --disable-cgi \
             --enable-mysqlnd \
             --with-mysql \
+            --with-soap \
+            --with-mcrypt \
             --with-curl \
             --with-openssl=/usr/local/ssl \
             --with-readline \
@@ -90,12 +93,6 @@ RUN buildDeps=" \
       && { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
       && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
       && make clean
-
-RUN apt-get update \
- && apt-get install libxml2-dev --no-install-recommends -y \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* \
- && docker-php-ext-install soap
 
 COPY docker-php-* /usr/local/bin/
 
