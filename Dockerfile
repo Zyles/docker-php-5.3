@@ -81,7 +81,6 @@ RUN buildDeps=" \
             --disable-cgi \
             --enable-mysqlnd \
             --with-mysql \
-            --with-mcrypt \
             --with-curl \
             --with-openssl=/usr/local/ssl \
             --with-readline \
