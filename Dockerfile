@@ -91,6 +91,12 @@ RUN buildDeps=" \
       && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
       && make clean
 
+RUN apt-get update \
+ && apt-get install libxml2-dev --no-install-recommends -y \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* \
+ && docker-php-ext-install soap
+
 COPY docker-php-* /usr/local/bin/
 
 WORKDIR /var/www/html
