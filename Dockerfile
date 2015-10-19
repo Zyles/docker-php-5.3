@@ -86,6 +86,7 @@ RUN buildDeps=" \
             --with-readline \
             --with-recode \
             --with-zlib \
+            --enable-zip \
             --enable-soap \
       && make -j"$(nproc)" \
       && make install \
