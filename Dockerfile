@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libsqlite3-0 \
       libxml2 \
       libxml2-dev \
+      libpng-dev \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
@@ -62,6 +63,7 @@ RUN buildDeps=" \
                 libssl-dev \
                 libxml2-dev \
                 xz-utils \
+                libpng-dev \
       " \
       && set -x \
       && apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
