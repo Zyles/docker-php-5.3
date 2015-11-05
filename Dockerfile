@@ -86,6 +86,8 @@ RUN buildDeps=" \
             --with-readline \
             --with-recode \
             --with-zlib \
+            --enable-gd-native-ttf  \
+            --with-gd \
             --enable-zip \
             --enable-soap \
       && make -j"$(nproc)" \
