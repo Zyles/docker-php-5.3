@@ -92,6 +92,7 @@ RUN buildDeps=" \
             --with-gd \
             --enable-zip \
             --enable-soap \
+            --enable-ftp \
       && make -j"$(nproc)" \
       && make install \
       && { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
